@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Expressions - Learn & Practice</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: radial-gradient(circle at center, #2c2c2c 0%, #1a1a1a 100%);
+            min-height: 100vh;
+            color: #f5f5f5;
+            padding: 20px;
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            font-weight: normal;
+            letter-spacing: 3px;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #cccccc;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .description {
+            font-size: 1rem;
+            color: #aaaaaa;
+            font-weight: 300;
+        }
+
+        .clock-decoration {
+            position: absolute;
+            top: -20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border: 3px solid #ffffff;
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+
+        .clock-decoration::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 2px;
+            background: #ffffff;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .clock-decoration::after {
+            content: '';
+            position: absolute;
+        .clock-decoration::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 2px;
+            background: #ffffff;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .clock-decoration::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 15px;
+            height: 2px;
+            background: #ffffff;
+            transform: translate(-50%, -50%) rotate(135deg);
+        }
+
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            margin-bottom: 40px;
+            border: 2px solid #444;
+            border-radius: 50px;
+            padding: 8px;
+            background: #222;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 40px;
+        }
+
+        .tab-btn {
+            background: transparent;
+            color: #cccccc;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-size: 1rem;
+Use Control + Shift + m to toggle the tab key moving focus. Alternatively, use esc then tab to move to the next interactive element on the page.
+
+            top: 50%;
+            left: 50%;
+            width: 15px;
+            height: 2px;
+            background: #ffffff;
+            transform: translate(-50%, -50%) rotate(135deg);
+        }
+
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            margin-bottom: 40px;
+            border: 2px solid #444;
+            border-radius: 50px;
+            padding: 8px;
+            background: #222;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 40px;
+        }
+
+        .tab-btn {
+            background: transparent;
+            color: #cccccc;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-size: 1rem;
+            font-weight: 400;
+            flex: 1;
+            text-align: center;
+            font-family: inherit;
+        }
+
+        .tab-btn:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .tab-btn.active {
+            background: #ffffff;
+            color: #222;
+            box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
+            font-weight: 500;
+        }
+
+        .tab-content {
+            display: none;
+            background: linear-gradient(145deg, #2a2a2a, #1f1f1f);
+            border: 2px solid #444;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3), 
+                        0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .lesson-section {
+            margin-bottom: 40px;
+        }
+
+        .lesson-section h2 {
+            color: #ffffff;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            border-bottom: 2px solid #555;
+            padding-bottom: 10px;
+            font-weight: normal;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .lesson-section h3 {
+            color: #dddddd;
+            margin: 25px 0 15px 0;
+            font-size: 1.4rem;
+            font-weight: normal;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .lesson-section h3::before {
+            content: '●';
+            position: absolute;
+            left: 0;
+            color: #888;
+        }
+
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .example-item {
+            background: linear-gradient(135deg, #333 0%, #2a2a2a 100%);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid #555;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .example-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            border-color: #666;
+        }
+
+        .digital-time {
+            font-family: 'Courier New', 'Monaco', monospace;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 8px;
+            text-align: center;
+            background: #1a1a1a;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #444;
+            letter-spacing: 2px;
+        }
+
+        .spoken-time {
+            font-size: 1.2rem;
+            color: #cccccc;
+            font-weight: 500;
+            margin-bottom: 10px;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .time-explanation {
+            font-size: 0.95rem;
+            color: #aaaaaa;
+            line-height: 1.5;
+            text-align: center;
+            border-top: 1px solid #444;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+
+        .practice-area {
+            text-align: center;
+        }
+
+        .clock-display {
+            font-family: 'Courier New', 'Monaco', monospace;
+            font-size: 4.5rem;
+            background: radial-gradient(circle, #1a1a1a 0%, #0d0d0d 100%);
+            color: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 40px auto;
+            max-width: 400px;
+            border: 3px solid #444;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5),
+                        0 0 30px rgba(255, 255, 255, 0.1);
+            letter-spacing: 4px;
+            position: relative;
+        }
+
+        .clock-display::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            border: 1px solid #333;
+            border-radius: 15px;
+        }
+
+        .input-area {
+            margin: 30px 0;
+        }
+
+        .user-input {
+            width: 100%;
+            max-width: 500px;
+            padding: 18px 25px;
+            font-size: 1.3rem;
+            border: 2px solid #444;
+            border-radius: 50px;
+            background: #2a2a2a;
+            color: #ffffff;
+            text-align: center;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .user-input:focus {
+            outline: none;
+            border-color: #666;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            background: #333;
+        }
+
+        .user-input::placeholder {
+            color: #888;
+            font-style: italic;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            color: #222;
+            border: 2px solid #ddd;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            min-width: 140px;
+        }
+
+        .btn:hover {
+            background: linear-gradient(145deg, #f8f8f8, #ffffff);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border-color: #ccc;
+        }
+
+        .btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            background: #666;
+            color: #999;
+        }
+
+        .feedback {
+            margin: 30px auto;
+            padding: 20px;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: 400;
+            text-align: center;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 600px;
+            border: 2px solid transparent;
+        }
+
+        .feedback.correct {
+            background: linear-gradient(135deg, #2d5a2d, #1a4d1a);
+            border-color: #4a7c59;
+            color: #b8e6b8;
+        }
+
+        .feedback.incorrect {
+            background: linear-gradient(135deg, #5a2d2d, #4d1a1a);
+            border-color: #7c4a4a;
+            color: #e6b8b8;
+        }
+
+        .feedback.hint {
+            background: linear-gradient(135deg, #5a4d2d, #4d3d1a);
+            border-color: #7c6a4a;
+            color: #e6d4b8;
+        }
+
+        .score-board {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px auto;
+            background: linear-gradient(135deg, #333, #2a2a2a);
+            padding: 25px;
+            border-radius: 20px;
+            max-width: 500px;
+            border: 2px solid #555;
+        }
+
+        .score-item {
+            text-align: center;
+        }
+
+        .score-value {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #ffffff;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .score-label {
+            font-size: 0.95rem;
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .rules-list {
+            background: linear-gradient(135deg, #2a2a2a, #222);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border: 1px solid #444;
+        }
+
+        .rules-list li {
+            margin: 12px 0;
+            padding: 12px 0;
+            border-bottom: 1px solid #333;
+            font-size: 1.05rem;
+        }
+
+        .rules-list li:last-child {
+            border-bottom: none;
+        }
+
+        .rules-list strong {
+            color: #ffffff;
+            font-family: 'Courier New', monospace;
+        }
+
+        .tip-box {
+            background: linear-gradient(135deg, #333, #2a2a2a);
+            border: 2px solid #555;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            position: relative;
+        }
+
+        .tip-box::before {
+            content: '💡';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: #222;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 1.2rem;
+        }
+
+        .tip-box h4 {
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            font-weight: normal;
+            margin-top: 10px;
+        }
+
+        .tip-box p, .tip-box li {
+            color: #cccccc;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .tip-box ul {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .tip-box li::before {
+            content: '▸ ';
+            color: #888;
+            margin-right: 8px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+                letter-spacing: 2px;
+            }
+
+            .nav-tabs {
+                flex-direction: column;
+                max-width: 300px;
+                gap: 5px;
+            }
+
+            .tab-btn {
+                border-radius: 25px;
+                margin: 2px 0;
+            }
+
+            .tab-content {
+                padding: 25px;
+            }
+
+            .clock-display {
+                font-size: 3rem;
+                padding: 25px;
+                letter-spacing: 2px;
+            }
+
+            .examples-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 200px;
+            }
+
+            .score-board {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .clock-decoration {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .clock-display {
+                font-size: 2.5rem;
+                padding: 20px;
+            }
+
+            .user-input {
+                font-size: 1.1rem;
+                padding: 15px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="clock-decoration"></div>
+            <h1>⏰ TIME EXPRESSIONS</h1>
+            <p class="subtitle">Master English Time Telling</p>
+            <p class="description">Learn "quarter past", "half past", "quarter to" and become fluent in time expressions</p>
+        </header>
+
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="showTab('learn')">📚 LEARN</button>
+            <button class="tab-btn" onclick="showTab('practice')">🎯 PRACTICE</button>
+            <button class="tab-btn" onclick="showTab('reference')">📖 REFERENCE</button>
+            <button class="tab-btn" onclick="showTab('about')">ℹ️ ABOUT</button>
+        </div>
+
+        <!-- Learning Tab -->
+        <div id="learnTab" class="tab-content active">
+            <div class="lesson-section">
+                <h2>🎯 Understanding Time Expressions</h2>
+                <p>In English, there are several elegant ways to express time. These traditional expressions are used in formal speech, British English, and when you want to sound sophisticated. Let's master them step by step.</p>
+                
+                <div class="tip-box">
+                    <h4>The Clock Face Concept</h4>
+                    <p>Imagine the clock as being divided into quarters (15-minute segments). The key is understanding when to use "past" (for the first half-hour) versus "to" (for the second half-hour).</p>
+                </div>
+            </div>
+
+            <div class="lesson-section">
+                <h2>⏰ Essential Time Expressions</h2>
+                
+                <h3>🕐 Exact Hours - "O'Clock"</h3>
+                <div class="examples-grid">
+                    <div class="example-item">
+                        <div class="digital-time">03:00</div>
+                        <div class="spoken-time">"Three o'clock"</div>
+                        <div class="time-explanation">Perfect precision. "O'clock" means "of the clock" - used only for exact hours.</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="digital-time">12:00</div>
+                        <div class="spoken-time">"Twelve o'clock" / "Noon"</div>
+                        <div class="time-explanation">12:00 PM = "Noon" or "Midday" | 12:00 AM = "Midnight"</div>
+                    </div>
+                </div>
+
+                <h3>🕕 Half Past - The 30-Minute Mark</h3>
+                <div class="examples-grid">
+                    <div class="example-item">
+                        <div class="digital-time">03:30</div>
+                        <div class="spoken-time">"Half past three"</div>
+                        <div class="time-explanation">Exactly 30 minutes after the hour. Always use "past" with "half".</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="digital-time">07:30</div>
+                        <div class="spoken-time">"Half past seven"</div>
+                        <div class="time-explanation">The most common way to express 30 minutes in formal English.</div>
+                    </div>
+                </div>
+
+                <h3>🕒 Quarter Past - The 15-Minute Mark</h3>
+                <div class="examples-grid">
+                    <div class="example-item">
+                        <div class="digital-time">03:15</div>
+                        <div class="spoken-time">"Quarter past three"</div>
+                        <div class="time-explanation">15 minutes = 1/4 of an hour. The first quarter has "passed".</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="digital-time">09:15</div>
+                        <div class="spoken-time">"Quarter past nine"</div>
+                        <div class="time-explanation">Think: "A quarter of the hour has passed since 9:00"</div>
+                    </div>
+                </div>
+
+                <h3>🕘 Quarter To - The 45-Minute Mark</h3>
+                <div class="examples-grid">
+                    <div class="example-item">
+                        <div class="digital-time">02:45</div>
+                        <div class="spoken-time">"Quarter to three"</div>
+                        <div class="time-explanation">45 minutes past = 15 minutes before the NEXT hour. Notice we say "three", not "two"!</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="digital-time">08:45</div>
+                        <div class="spoken-time">"Quarter to nine"</div>
+                        <div class="time-explanation">Always reference the upcoming hour when using "to".</div>
+                    </div>
+                </div>
+
+                <h3>📝 Other Minutes - The Past/To Rule</h3>
+                <div class="examples-grid">
+                    <div class="example-item">
+                        <div class="digital-time">04:10</div>
+                        <div class="spoken-time">"Ten past four"</div>
+                        <div class="time-explanation">Minutes 1-30: Use "past" + current hour</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="digital-time">04:50</div>
+                        <div class="spoken-time">"Ten to five"</div>
+                        <div class="time-explanation">Minutes 31-59: Use "to" + next hour (50 min = 10 min to next hour)</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="digital-time">06:25</div>
+                        <div class="spoken-time">"Twenty-five past six"</div>
+                        <div class="time-explanation">Any number of minutes works with this pattern</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="digital-time">06:35</div>
+                        <div class="spoken-time">"Twenty-five to seven"</div>
+                        <div class="time-explanation">35 minutes past = 25 minutes to the next hour</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lesson-section">
+                <h2>🧠 The Master Rule</h2>
+                <div class="tip-box">
+                    <h4>Memory Strategy</h4>
+                    <ul>
+                        <li><strong>Minutes 0-30:</strong> Use "PAST" + current hour</li>
+                        <li><strong>Minutes 31-59:</strong> Use "TO" + next hour</li>
+                        <li><strong>Special cases:</strong> 15 = quarter, 30 = half, 45 = quarter to</li>
+                        <li><strong>Pro tip:</strong> For "to", subtract minutes from 60 to get the number to use</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Tab -->
+        <div id="aboutTab" class="tab-content">
+            <div class="lesson-section">
+                <h2>🎯 About This Learning Tool</h2>
+                <p>Welcome to the ultimate Time Expressions learning platform! This comprehensive tool was designed to help English learners master one of the most challenging aspects of the language - expressing time in the traditional, elegant way that native speakers use.</p>
+                <p>Whether you're preparing for exams, moving to an English-speaking country, or simply want to sound more sophisticated, this tool will transform your understanding of English time expressions.</p>
+            </div>
+
+            <div class="lesson-section">
+                <h2>📚 Learning Philosophy</h2>
+                <div class="tip-box">
+                    <h4>Why Traditional Time Expressions Matter</h4>
+                    <p>While digital expressions like "three fifteen" are common in casual speech, traditional expressions like "quarter past three" are essential for:</p>
+                    <ul>
+                        <li>Formal and professional communication</li>
+                        <li>Academic and examination contexts</li>
+                        <li>Understanding British English and classical literature</li>
+                        <li>Sounding educated and sophisticated</li>
+                        <li>Appreciating the elegance of the English language</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="lesson-section">
+                <h2>🛠️ Tool Features</h2>
+                
+                <h3>📖 Comprehensive Learning Module</h3>
+                <div class="examples-grid">
+                    <div class="example-item">
+                        <div class="spoken-time">Step-by-Step Progression</div>
+                        <div class="time-explanation">From basic concepts to advanced expressions, with clear explanations and memory strategies.</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="spoken-time">Visual Examples</div>
+                        <div class="time-explanation">Digital time displays paired with correct spoken expressions for immediate understanding.</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="spoken-time">Memory Techniques</div>
+                        <div class="time-explanation">The master rule and helpful mnemonics to ensure you never forget the patterns.</div>
+                    </div>
+                </div>
+
+                <h3>🎯 Interactive Practice System</h3>
+                <div class="examples-grid">
+                    <div class="example-item">
+                        <div class="spoken-time">Random Generation</div>
+                        <div class="time-explanation">Unlimited practice with randomly generated times focusing on the most common expressions.</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="spoken-time">Intelligent Feedback</div>
+                        <div class="time-explanation">Detailed explanations for incorrect answers and helpful hints when you're stuck.</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="spoken-time">Progress Tracking</div>
+                        <div class="time-explanation">Real-time accuracy statistics to monitor your improvement over time.</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="spoken-time">Flexible Input</div>
+                        <div class="time-explanation">Accepts multiple correct variations and alternative phrasings of the same time.</div>
+                    </div>
+                </div>
+
+                <h3>📋 Quick Reference Guide</h3>
+                <div class="examples-grid">
+                    <div class="example-item">
+                        <div class="spoken-time">Complete Pattern Library</div>
+                        <div class="time-explanation">Every common time expression with examples and usage notes.</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="spoken-time">Cultural Context</div>
+                        <div class="time-explanation">British vs American preferences and when to use formal vs casual expressions.</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="spoken-time">Special Cases</div>
+                        <div class="time-explanation">24-hour format conversion and unique situations like noon and midnight.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lesson-section">
+                <h2>🎨 Design Philosophy</h2>
+                <div class="tip-box">
+                    <h4>Clock-Inspired Aesthetic</h4>
+                    <p>The black and white design theme was carefully chosen to:</p>
+                    <ul>
+                        <li>Mirror the classic appearance of traditional clocks and watches</li>
+                        <li>Provide high contrast for optimal readability and focus</li>
+                        <li>Create a timeless, sophisticated learning environment</li>
+                        <li>Minimize distractions while maximizing learning effectiveness</li>
+                        <li>Reflect the elegance of the time expressions being taught</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="lesson-section">
+                <h2>🎓 Educational Approach</h2>
+                
+                <h3>🧠 Cognitive Learning Principles</h3>
+                <div class="examples-grid">
+                    <div class="example-item">
+                        <div class="spoken-time">Pattern Recognition</div>
+                        <div class="time-explanation">Focus on understanding the underlying logic rather than memorizing individual cases.</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="spoken-time">Active Practice</div>
+                        <div class="time-explanation">Hands-on typing practice reinforces learning through muscle memory and repetition.</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="spoken-time">Immediate Feedback</div>
+                        <div class="time-explanation">Instant correction and explanation help prevent the formation of bad habits.</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="spoken-time">Graduated Difficulty</div>
+                        <div class="time-explanation">Start with concepts, progress through examples, then practice with random challenges.</div>
+                    </div>
+                </div>
+
+                <h3>🌍 Global Accessibility</h3>
+                <div class="examples-grid">
+                    <div class="example-item">
+                        <div class="spoken-time">Universal Design</div>
+                        <div class="time-explanation">Clean, intuitive interface that works for learners of all backgrounds and technical skills.</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="spoken-time">Mobile Optimized</div>
+                        <div class="time-explanation">Fully responsive design allows learning on phones, tablets, and computers.</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="spoken-time">Offline Capable</div>
+                        <div class="time-explanation">Self-contained tool that works without internet connection once loaded.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lesson-section">
+                <h2>💡 Tips for Success</h2>
+                <div class="rules-list">
+                    <ul style="list-style: none; padding: 0;">
+                        <li><strong>Start with the Learn tab</strong> → Master the concepts before practicing</li>
+                        <li><strong>Practice little and often</strong> → 10 minutes daily is better than one long session</li>
+                        <li><strong>Use the hint system</strong> → Don't guess; understand the logic</li>
+                        <li><strong>Accept mistakes</strong> → They're part of the learning process</li>
+                        <li><strong>Practice out loud</strong> → Say the answers to improve pronunciation</li>
+                        <li><strong>Apply in real life</strong> → Use these expressions in conversations</li>
+                        <li><strong>Review the Reference</strong> → Keep coming back to reinforce patterns</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="lesson-section">
+                <h2>🏆 Target Audience</h2>
+                <div class="tip-box">
+                    <h4>Who Will Benefit Most</h4>
+                    <ul>
+                        <li><strong>English Language Learners</strong> - Intermediate to advanced students</li>
+                        <li><strong>Exam Candidates</strong> - IELTS, TOEFL, Cambridge exam preparation</li>
+                        <li><strong>International Students</strong> - Preparing for study in English-speaking countries</li>
+                        <li><strong>Professionals</strong> - Business people needing formal English skills</li>
+                        <li><strong>Teachers</strong> - ESL instructors looking for teaching resources</li>
+                        <li><strong>Anyone</strong> - Who wants to speak English more elegantly and precisely</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="lesson-section" style="background: linear-gradient(135deg, #333, #2a2a2a); padding: 25px; border-radius: 15px; border: 2px solid #555;">
+                <h2 style="border-bottom: 2px solid #555; color: #ffffff;">🏅 Credits & Acknowledgments</h2>
+                <div style="margin-top: 20px;">
+                    <p><strong>Created by:</strong> Simon</p>
+                    <p><strong>Design Philosophy:</strong> Minimalist clock-inspired aesthetic</p>
+                    <p><strong>Educational Approach:</strong> Cognitive learning principles with pattern recognition</p>
+                    <p><strong>Technology Stack:</strong> HTML5, CSS3, Vanilla JavaScript</p>
+                    <p><strong>Typography:</strong> Georgia serif for elegance, Courier New for digital displays</p>
+                    <p><strong>Accessibility:</strong> High contrast design, keyboard navigation, mobile responsive</p>
+                    <p style="margin-top: 20px; font-style: italic; color: #cccccc; border-top: 1px solid #444; padding-top: 15px;">
+                        This is an independent educational project designed to make English time expressions accessible and enjoyable for learners worldwide. Built with passion for language learning and elegant design.
+                    </p>
+                </div>
+            </div>
+
+            <div class="lesson-section">
+                <h2>🚀 Ready to Master Time Expressions?</h2>
+                <p style="text-align: center; font-size: 1.1rem; color: #cccccc;">
+                    Now that you understand how this tool works, head over to the <strong>Learn</strong> tab to start your journey, 
+                    then challenge yourself with the <strong>Practice</strong> mode. Remember: mastering time expressions takes practice, 
+                    but with consistent effort, you'll be speaking like a native in no time!
+                </p>
+            </div>
+        </div>
+
+        <!-- Practice Tab -->
+        <div id="practiceTab" class="tab-content">
+            <div class="practice-area">
+                <h2>🎯 Practice Time Expressions</h2>
+                <p>A digital time will appear below. Type how you would say it using traditional English time expressions!</p>
+                
+                <div class="score-board">
+                    <div class="score-item">
+                        <span class="score-value" id="correct">0</span>
+                        <div class="score-label">Correct</div>
+                    </div>
+                    <div class="score-item">
+                        <span class="score-value" id="total">0</span>
+                        <div class="score-label">Attempts</div>
+                    </div>
+                    <div class="score-item">
+                        <span class="score-value" id="percentage">0%</span>
+                        <div class="score-label">Accuracy</div>
+                    </div>
+                </div>
+
+                <div class="clock-display" id="timeDisplay">03:15</div>
+
+                <div class="input-area">
+                    <input type="text" class="user-input" id="userInput" placeholder="Type the time in words... (e.g., 'quarter past three')" maxlength="60">
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn" onclick="checkAnswer()">✓ Check Answer</button>
+                    <button class="btn" onclick="showHint()">💡 Get Hint</button>
+                    <button class="btn" onclick="generateNewTime()">→ Next Time</button>
+                    <button class="btn" onclick="resetPractice()">↻ Reset Score</button>
+                </div>
+
+                <div class="feedback" id="feedback">
+                    Enter your answer and click "Check Answer" to see how you did!
+                </div>
+            </div>
+        </div>
+
+        <!-- Reference Tab -->
+        <div id="referenceTab" class="tab-content">
+            <div class="lesson-section">
+                <h2>📖 Complete Reference Guide</h2>
+                
+                <h3>⚡ Standard Time Expressions</h3>
+                <div class="rules-list">
+                    <ul style="list-style: none; padding: 0;">
+                        <li><strong>X:00</strong> → X o'clock</li>
+                        <li><strong>X:15</strong> → Quarter past X</li>
+                        <li><strong>X:30</strong> → Half past X</li>
+                        <li><strong>X:45</strong> → Quarter to (X+1)</li>
+                        <li><strong>X:05</strong> → Five past X</li>
+                        <li><strong>X:10</strong> → Ten past X</li>
+                        <li><strong>X:20</strong> → Twenty past X</li>
+                        <li><strong>X:25</strong> → Twenty-five past X</li>
+                        <li><strong>X:35</strong> → Twenty-five to (X+1)</li>
+                        <li><strong>X:40</strong> → Twenty to (X+1)</li>
+                        <li><strong>X:50</strong> → Ten to (X+1)</li>
+                        <li><strong>X:55</strong> → Five to (X+1)</li>
+                    </ul>
+                </div>
+
+                <h3>🌍 Alternative Expressions</h3>
+                <div class="examples-grid">
+                    <div class="example-item">
+                        <div class="digital-time">03:15</div>
+                        <div class="spoken-time">"Quarter past three"</div>
+                        <div class="time-explanation">Formal/British OR "Three fifteen" (Casual/American)</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="digital-time">03:30</div>
+                        <div class="spoken-time">"Half past three"</div>
+                        <div class="time-explanation">Traditional OR "Three thirty" (Modern)</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="digital-time">02:45</div>
+                        <div class="spoken-time">"Quarter to three"</div>
+                        <div class="time-explanation">Elegant OR "Two forty-five" (Straightforward)</div>
+                    </div>
+                </div>
+
+                <h3>🎭 Cultural & Regional Usage</h3>
+                <div class="tip-box">
+                    <h4>When to Use Each Style</h4>
+                    <p><strong>Traditional Expressions (past/to):</strong> Formal situations, British English, sophisticated speech, written invitations</p>
+                    <p><strong>Digital Style:</strong> Casual conversation, American English, business contexts, when precision is key</p>
+                    <p><strong>Both are perfectly correct</strong> - choose based on your audience and context!</p>
+                </div>
+
+                <h3>🕐 Special Cases & Tips</h3>
+                <div class="examples-grid">
+                    <div class="example-item">
+                        <div class="digital-time">15:30</div>
+                        <div class="spoken-time">"Half past three (PM)"</div>
+                        <div class="time-explanation">24-hour format: Convert first, then apply the rules</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="digital-time">00:15</div>
+                        <div class="spoken-time">"Quarter past midnight"</div>
+                        <div class="time-explanation">Midnight is 00:00 in 24-hour format</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="digital-time">12:30</div>
+                        <div class="spoken-time">"Half past noon"</div>
+                        <div class="time-explanation">Can use "noon" instead of "twelve" for 12:30 PM</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentTime = { hours: 3, minutes: 15 };
+        let correctAnswers = 0;
+        let totalQuestions = 0;
+
+        const numberWords = {
+            1: "one", 2: "two", 3: "three", 4: "four", 5: "five",
+            6: "six", 7: "seven", 8: "eight", 9: "nine", 10: "ten",
+            11: "eleven", 12: "twelve"
+        };
+
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab
+            if (tabName === 'learn') {
+                document.getElementById('learnTab').classList.add('active');
+                document.querySelector('[onclick="showTab(\'learn\')"]').classList.add('active');
+            } else if (tabName === 'practice') {
+                document.getElementById('practiceTab').classList.add('active');
+                document.querySelector('[onclick="showTab(\'practice\')"]').classList.add('active');
+            } else if (tabName === 'reference') {
+                document.getElementById('referenceTab').classList.add('active');
+                document.querySelector('[onclick="showTab(\'reference\')"]').classList.add('active');
+            } else if (tabName === 'about') {
+                document.getElementById('aboutTab').classList.add('active');
+                document.querySelector('[onclick="showTab(\'about\')"]').classList.add('active');
+            }
+        }
+
+        function generateNewTime() {
+            // Generate random time with common minute values
+            currentTime.hours = Math.floor(Math.random() * 12) + 1; // 1-12
+            const commonMinutes = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55];
+            currentTime.minutes = commonMinutes[Math.floor(Math.random() * commonMinutes.length)];
+            
+            // Display time
+            const displayHours = currentTime.hours.toString().padStart(2, '0');
+            const displayMinutes = currentTime.minutes.toString().padStart(2, '0');
+            document.getElementById('timeDisplay').textContent = `${displayHours}:${displayMinutes}`;
+            
+            // Clear previous feedback and input
+            document.getElementById('userInput').value = '';
+            document.getElementById('feedback').textContent = 'Enter your answer and click "Check Answer" to see how you did!';
+            document.getElementById('feedback').className = 'feedback';
+        }
+
+        function getCorrectAnswer() {
+            const { hours, minutes } = currentTime;
+            
+            if (minutes === 0) {
+                return `${numberWords[hours]} o'clock`;
+            } else if (minutes <= 30) {
+                if (minutes === 15) {
+                    return `quarter past ${numberWords[hours]}`;
+                } else if (minutes === 30) {
+                    return `half past ${numberWords[hours]}`;
+                } else {
+                    const minuteWord = minutes === 5 ? "five" :
+                                     minutes === 10 ? "ten" :
+                                     minutes === 20 ? "twenty" :
+                                     minutes === 25 ? "twenty-five" : minutes.toString();
+                    return `${minuteWord} past ${numberWords[hours]}`;
+                }
+            } else {
+                const nextHour = hours === 12 ? 1 : hours + 1;
+                const minutesToNext = 60 - minutes;
+                
+                if (minutes === 45) {
+                    return `quarter to ${numberWords[nextHour]}`;
+                } else {
+                    const minuteWord = minutesToNext === 5 ? "five" :
+                                     minutesToNext === 10 ? "ten" :
+                                     minutesToNext === 20 ? "twenty" :
+                                     minutesToNext === 25 ? "twenty-five" : minutesToNext.toString();
+                    return `${minuteWord} to ${numberWords[nextHour]}`;
+                }
+            }
+        }
+
+        function normalizeAnswer(answer) {
+            return answer.toLowerCase()
+                        .replace(/[.,!?]/g, '')
+                        .replace(/\s+/g, ' ')
+                        .trim();
+        }
+
+        function checkAnswer() {
+            const userAnswer = normalizeAnswer(document.getElementById('userInput').value);
+            const correctAnswer = normalizeAnswer(getCorrectAnswer());
+            
+            // Alternative acceptable answers
+            const alternatives = getAlternativeAnswers();
+            
+            if (!userAnswer) {
+                document.getElementById('feedback').textContent = 'Please enter an answer first!';
+                document.getElementById('feedback').className = 'feedback hint';
+                return;
+            }
+            
+            totalQuestions++;
+            
+            if (userAnswer === correctAnswer || alternatives.includes(userAnswer)) {
+                correctAnswers++;
+                document.getElementById('feedback').innerHTML = `✨ <strong>Excellent!</strong> That's absolutely correct!`;
+                document.getElementById('feedback').className = 'feedback correct';
+            } else {
+                document.getElementById('feedback').innerHTML = `❌ <strong>Not quite right.</strong><br>The correct answer is: <em>"${getCorrectAnswer()}"</em>`;
+                document.getElementById('feedback').className = 'feedback incorrect';
+            }
+            
+            updateScore();
+        }
+
+        function getAlternativeAnswers() {
+            const { hours, minutes } = currentTime;
+            const alternatives = [];
+            
+            // Add variations with "a" article
+            if (minutes === 15) {
+                alternatives.push(`a quarter past ${numberWords[hours]}`);
+            } else if (minutes === 30) {
+                alternatives.push(`a half past ${numberWords[hours]}`);
+            } else if (minutes === 45) {
+                const nextHour = hours === 12 ? 1 : hours + 1;
+                alternatives.push(`a quarter to ${numberWords[nextHour]}`);
+            }
+            
+            // Add number-based alternatives for common times
+            if (minutes === 15) {
+                alternatives.push(`${numberWords[hours]} fifteen`);
+            } else if (minutes === 30) {
+                alternatives.push(`${numberWords[hours]} thirty`);
+            } else if (minutes === 45) {
+                alternatives.push(`${numberWords[hours]} forty-five`);
+            }
+            
+            return alternatives.map(alt => normalizeAnswer(alt));
+        }
+
+        function showHint() {
+            const { hours, minutes } = currentTime;
+            let hint = '';
+            
+            if (minutes === 0) {
+                hint = `This is an exact hour! Use "${numberWords[hours]} o'clock"`;
+            } else if (minutes === 15) {
+                hint = `This is 15 minutes past the hour. Try "quarter past ${numberWords[hours]}"`;
+            } else if (minutes === 30) {
+                hint = `This is exactly halfway through the hour. Try "half past ${numberWords[hours]}"`;
+            } else if (minutes === 45) {
+                const nextHour = hours === 12 ? 1 : hours + 1;
+                hint = `This is 45 minutes past, which is 15 minutes before the next hour. Try "quarter to ${numberWords[nextHour]}"`;
+            } else if (minutes <= 30) {
+                hint = `This is ${minutes} minutes after ${numberWords[hours]}. Use "${minutes <= 10 ? numberWords[minutes] || minutes : minutes} past ${numberWords[hours]}"`;
+            } else {
+                const nextHour = hours === 12 ? 1 : hours + 1;
+                const minutesToNext = 60 - minutes;
+                hint = `This is ${minutesToNext} minutes before ${numberWords[nextHour]}. Use "${minutesToNext <= 10 ? numberWords[minutesToNext] || minutesToNext : minutesToNext} to ${numberWords[nextHour]}"`;
+            }
+            
+            document.getElementById('feedback').innerHTML = `💡 <strong>Hint:</strong> ${hint}`;
+            document.getElementById('feedback').className = 'feedback hint';
+        }
+
+        function updateScore() {
+            document.getElementById('correct').textContent = correctAnswers;
+            document.getElementById('total').textContent = totalQuestions;
+            
+            const percentage = totalQuestions > 0 ? Math.round((correctAnswers / totalQuestions) * 100) : 0;
+            document.getElementById('percentage').textContent = percentage + '%';
+        }
+
+        function resetPractice() {
+            correctAnswers = 0;
+            totalQuestions = 0;
+            updateScore();
+            generateNewTime();
+            document.getElementById('feedback').textContent = '🔄 Score reset! Ready to start fresh. Good luck!';
+            document.getElementById('feedback').className = 'feedback';
+        }
+
+        // Allow Enter key to submit answer
+        document.getElementById('userInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                checkAnswer();
+            }
+        });
+
+        // Initialize with a random time
+        generateNewTime();
+    </script>
+</body>
+</html>
